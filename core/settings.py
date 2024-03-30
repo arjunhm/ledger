@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "api",
     "category",
     "tests",
+    "transaction",
     "rest_framework",
 ]
 

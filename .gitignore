@@ -2,7 +2,4 @@
 *.vscode
 *__pycache*
 .ruff*
-
-transaction/
-
 commit.md
