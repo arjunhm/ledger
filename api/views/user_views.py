@@ -11,7 +11,6 @@ class UserAPI(views.APIView):
     serializer_class = UserSerializer
 
     def get(self, request, *args, **kwargs):
-        # TODO Confirm if self is required
         if request.user.is_authenticated:
             serializer = self.serializer_class(self.request.user)
             return Response(serializer.data, status=status.HTTP_200_OK)
