@@ -19,7 +19,7 @@ class UserAPITest(APITestCase):
     def test_get_user_unauthenticated(self):
         url = reverse("user-api")
         response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_create_user(self):
         url = reverse("user-api")
@@ -64,7 +64,7 @@ class UserAPITest(APITestCase):
     def test_delete_user_unauthenticated(self):
         url = reverse("user-api")
         response = self.client.delete(url)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_reset_password(self):
         self.client.force_authenticate(user=self.user)
@@ -87,4 +87,4 @@ class UserAPITest(APITestCase):
     def test_reset_password_unauthenticated(self):
         url = reverse("reset-password-api")
         response = self.client.post(url)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)

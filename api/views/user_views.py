@@ -12,12 +12,15 @@ class UserAPI(views.APIView):
 
     def get(self, request, *args, **kwargs):
         # TODO Confirm if self is required
-        object = self.request.user
-        serializer = self.serializer_class(object)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        if request.user.is_authenticated:
+            serializer = self.serializer_class(self.request.user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(
+            {"message": "User not authenticated"}, status=status.HTTP_403_FORBIDDEN
+        )
 
     def post(self, request, *args, **kwargs):
-        if self.request.user:
+        if request.user.is_authenticated:
             return Response(
                 {"message": "Please logout to create an account"},
                 status=status.HTTP_400_BAD_REQUEST,
@@ -40,12 +43,12 @@ class UserAPI(views.APIView):
         return Response({"message": "User created"}, status=status.HTTP_201_CREATED)
 
     def delete(self, request, *args, **kwargs):
-        if self.request.user:
+        if request.user.is_authenticated:
             self.request.user.delete()
             return Response({"message": "User deleted"}, status=status.HTTP_200_OK)
 
         return Response(
-            {"message": "User not found"}, status=status.HTTP_400_BAD_REQUEST
+            {"message": "User not authenticated"}, status=status.HTTP_403_FORBIDDEN
         )
 
 
