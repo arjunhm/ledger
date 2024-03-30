@@ -1,5 +1,6 @@
 from django.urls import path
-from api.views import user_views
+from api.views import user_views, account_views
+
 
 urlpatterns = [
     # User
@@ -9,4 +10,5 @@ urlpatterns = [
         user_views.ResetPasswordAPI.as_view(),
         name="reset-password-api",
     ),
+    path("accounts/", account_views.AccountAPI.as_view(), name="account-api"),
 ]
