@@ -15,3 +15,20 @@ DB_HOST="localhost"
 DB_PORT="5432"
 ```
 
+Run `python manage.py migrate` to migrate the DB schema
+
+## Running the server
+
+Run `python manage.py runserver` to start the server.
+
+## Features
+
+Supports the following
+- Create User
+- Create Accounts (Savings, Checking, Credit Card)
+- Add/Edit Transactions
+
+## Making API calls
+
+You can find the API calls in `curl/curls.md`
+
