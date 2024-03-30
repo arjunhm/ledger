@@ -1,14 +1,10 @@
 from django.test import TestCase
 from django.urls import reverse
-from rest_framework.test import APIClient
 from rest_framework import status
-
-from account.serializers import AccountSerializer
-
-from transaction.models import Transaction
-from transaction.serializers import TransactionSerializer
+from rest_framework.test import APIClient
 
 from tests import setup
+from transaction.models import Transaction
 
 
 class TransactionAPITest(TestCase):
@@ -66,11 +62,10 @@ class TransactionAPITest(TestCase):
         )
 
         response = self.client.get(reverse("transactions-api"), {"id": transaction.id})
-        serializer = TransactionSerializer(transaction)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         try:
             txn_id = response.data.get("data", [])[0].get("id")
-        except:
+        except Exception:
             txn_id = -1
         self.assertEqual(txn_id, transaction.id)
 

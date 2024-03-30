@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
-from category.models import Category
+
 from account.models import Account
+from category.models import Category
 
 
 def setup_user(email="testuser@gmail.com", password="1234"):

@@ -1,7 +1,7 @@
-from rest_framework import views, status
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
 from django.core.paginator import Paginator
+from rest_framework import status, views
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 from account.models import Account
 from account.serializers import AccountSerializer

@@ -1,11 +1,12 @@
 from django.urls import path
+
 from api.views import (
-    auth_views,
-    user_views,
     account_views,
+    auth_views,
     category_views,
-    transaction_views,
     token_views,
+    transaction_views,
+    user_views,
 )
 
 urlpatterns = [
