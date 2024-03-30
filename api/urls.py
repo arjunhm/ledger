@@ -1,5 +1,5 @@
 from django.urls import path
-from api.views import user_views, account_views
+from api.views import user_views, account_views, category_views
 
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
         name="reset-password-api",
     ),
     path("accounts/", account_views.AccountAPI.as_view(), name="account-api"),
+    path("categories/", category_views.CategoryAPI.as_view(), name="categories-api"),
 ]

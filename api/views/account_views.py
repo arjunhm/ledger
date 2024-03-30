@@ -53,7 +53,6 @@ class AccountAPI(views.APIView):
                 {"message": "Account not found"}, status=status.HTTP_404_NOT_FOUND
             )
 
-        
         serializer = self.serializer_class(account, data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)

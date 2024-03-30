@@ -4,14 +4,13 @@ from rest_framework.test import APIClient
 from rest_framework import status
 from account.models import Account
 from account.serializers import AccountSerializer
-from django.contrib.auth import get_user_model
+from tests.setup import setup_user
 
 
 class AccountAPITest(TestCase):
     def setUp(self):
-        User = get_user_model()
         self.client = APIClient()
-        self.user = User.objects.create_user(email="testuser", password="12345")
+        self.user = setup_user()
         self.client.force_authenticate(user=self.user)
 
     def test_list_accounts(self):
@@ -47,7 +46,11 @@ class AccountAPITest(TestCase):
         account = Account.objects.create(
             user=self.user, name="Test Account", account_type="savings", balance=1000.00
         )
-        updated_data = {"name": "Updated Account", "balance": 1500.00, "account_type": account.account_type}
+        updated_data = {
+            "name": "Updated Account",
+            "balance": 1500.00,
+            "account_type": account.account_type,
+        }
         response = self.client.put(
             reverse("account-api"), {"id": account.id, **updated_data}, format="json"
         )

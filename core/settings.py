@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "user",
     "account",
     "api",
+    "category",
     "tests",
     "rest_framework",
 ]
