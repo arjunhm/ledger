@@ -10,7 +10,7 @@ class Transaction(models.Model):
 
     user = models.ForeignKey("user.User", on_delete=models.CASCADE)
     account = models.ForeignKey("account.Account", on_delete=models.CASCADE)
-    
+
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     type = models.CharField(max_length=10, choices=TRANSACTION_TYPES)
     category = models.ForeignKey(
