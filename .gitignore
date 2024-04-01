@@ -1,5 +1,5 @@
 .env
 *.vscode
 *__pycache*
-.ruff*
+*ruff*
 commit.md

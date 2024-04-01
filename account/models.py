@@ -22,4 +22,4 @@ class Account(models.Model):
         ordering = ["-id"]
 
     def __str__(self):
-        return f"{self.name} ({self.account_type})"
+        return f"{self.name}__{self.account_type}__{self.balance}"
