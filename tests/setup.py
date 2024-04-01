@@ -1,15 +1,16 @@
 from django.contrib.auth import get_user_model
-from category.models import Category
+
 from account.models import Account
+from category.models import Category
 
 
-def setup_user():
+def setup_user(email="testuser@gmail.com", password="1234"):
     User = get_user_model()
     try:
-        user = User.objects.get(email="testuser")
+        user = User.objects.get(email=email)
         return user
     except User.DoesNotExist:
-        return User.objects.create_user(email="testuser", password="12345")
+        return User.objects.create_user(email=email, password=password)
 
 
 def setup_category():
